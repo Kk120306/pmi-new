@@ -1,5 +1,7 @@
 import HomeBg from "@/public/home-bg.jpg";
 import NewestArticle from "@/app/ui/home/NewestArticle";
+import RecentArticles from "@/app/ui/home/RecentArticles";
+import HomeSecBg from "@/public/home-sec-bg.jpg";
 
 export default function Home() {
     return (
@@ -27,12 +29,12 @@ export default function Home() {
                 <NewestArticle />
                 <div className="w-full md:px-8 lg:px-12">
                     <img
-                        // src={HomeSBg}
+                        src={HomeSecBg.src}
                         alt="Home Section Background"
                         className="w-full max-w-6xl mx-auto max-h-[200px] md:max-h-[300px] lg:max-h-[400px] object-cover"
                     />
                 </div>
-                {/* <RecentArticles /> */}
+                <RecentArticles />
             </div>
 
 
