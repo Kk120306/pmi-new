@@ -5,104 +5,107 @@ const prisma = new PrismaClient();
 
 async function main() {
 
-  const password = await bcrypt.hash("admin123", 10);
+    await prisma.article.deleteMany();
+  await prisma.author.deleteMany();
 
-  await prisma.author.create({
-    data: {
-      id: 1,
-      name: "Kyle Tsuji",
-      bio: "Bcom @ UBC",
-      profileImage: "/assets/face/kyle.jpg",
-      contact: "ktsuji@student.ubc.ca",
-      role: "Lead Analyst",
-      linkedin: "https://www.linkedin.com/in/kytsuj/",
-      email: "kyle@example.com",
-      password,
-      articles: {
-        create: [
-          {
+    const password = await bcrypt.hash("admin123", 10);
+
+    await prisma.author.create({
+        data: {
             id: 1,
-            title: "Brand Genericization: Tupperware’s Decline and Google’s Success",
-            slug: "genericization-tupperware-google",
-            summary: "The article explores the concept of brand genericization...",
-            src: "19CJ8rbnAwiiUNblpD1xZW9YOMm6jCH7c",
-            tags: ["Strategy", "Innovation"],
-            publishedAt: new Date("2025-02-02"),
-          },
-          {
-            id: 3,
-            title: "Netflix Equity Research Report",
-            slug: "netflix-equity-research",
-            summary: "This report provides an in-depth analysis of Netflix...",
-            src: "1uxk1euFKHQ6XsyxKP2DVZneuaIiVMxat",
-            tags: ["Equity Research"],
-            publishedAt: new Date("2025-05-01"),
-          },
-        ],
-      },
-    },
-  });
+            name: "Kyle Tsuji",
+            bio: "Bcom @ UBC",
+            profileImage: "authors/kyle.jpg",
+            contact: "ktsuji@student.ubc.ca",
+            role: "Lead Analyst",
+            linkedin: "https://www.linkedin.com/in/kytsuj/",
+            email: "kyle@example.com",
+            password,
+            articles: {
+                create: [
+                    {
+                        id: 1,
+                        title: "Brand Genericization: Tupperware’s Decline and Google’s Success",
+                        slug: "genericization-tupperware-google",
+                        summary: "The article explores the concept of brand genericization, where a brand name becomes synonymous with a whole product category. It discusses how this phenomenon can lead to either the growth or decline of a company, using examples like Google and Tupperware, and highlights the strategic challenges businesses face in managing their brand identity.",
+                        src: "19CJ8rbnAwiiUNblpD1xZW9YOMm6jCH7c",
+                        tags: ["Strategy", "Innovation"],
+                        publishedAt: new Date("2025-02-02"),
+                    },
+                    {
+                        id: 3,
+                        title: "Netflix Equity Research Report",
+                        slug: "netflix-equity-research",
+                        summary: "This report provides an in-depth analysis of Netflix’s equity performance, evaluating its revenue growth, subscriber trends, and position in the streaming industry.",
+                        src: "1uxk1euFKHQ6XsyxKP2DVZneuaIiVMxat",
+                        tags: ["Equity Research"],
+                        publishedAt: new Date("2025-05-01"),
+                    },
+                ],
+            },
+        },
+    });
 
-  await prisma.author.create({
-    data: {
-      id: 2,
-      name: "Kai Kameyama",
-      bio: "Bcom @ UBC",
-      profileImage: "/assets/face/kai.jpeg",
-      contact: "kkamey01@student.ubc.ca",
-      role: "Lead Developer",
-      linkedin: "www.linkedin.com/in/kaikameyama",
-      email: "kai@example.com",
-      password,
-    },
-  });
-
-  await prisma.author.create({
-    data: {
-      id: 3,
-      name: "Anderson Ko",
-      bio: "Bcom @ UBC",
-      profileImage: "/assets/face/ander.jpg",
-      contact: "kohc.anderson@gmail.com",
-      role: "Jr Analyst",
-      linkedin: "https://www.linkedin.com/in/anderson-ko/",
-      email: "anderson@example.com",
-      password,
-      articles: {
-        create: [
-          {
+    await prisma.author.create({
+        data: {
             id: 2,
-            title: "Walmart Equity Research Report",
-            slug: "walmart-equity-research",
-            summary: "This report analyzes Walmart’s equity performance...",
-            src: "1zmuJQE0rqSfLFDTeYkesxJ9V-f0qBsME",
-            tags: ["Equity Research"],
-            publishedAt: new Date("2025-03-10"),
-          },
-        ],
-      },
-    },
-  });
+            name: "Kai Kameyama",
+            bio: "Bcom @ UBC",
+            profileImage: "authors/kai.jpeg",
+            contact: "kkamey01@student.ubc.ca",
+            role: "Lead Developer",
+            linkedin: "www.linkedin.com/in/kaikameyama",
+            email: "kai@example.com",
+            password,
+        },
+    });
 
-  await prisma.author.create({
-    data: {
-      id: 4,
-      name: "Luke Delahunty",
-      bio: "Bcom @ UBC",
-      profileImage: "/assets/face/luke.jpg",
-      contact: "lukedelahunty8@gmail.com",
-      role: "Jr Analyst",
-      linkedin: "https://www.linkedin.com/in/luke-delahunty",
-      email: "luke@example.com",
-      password,
-    },
-  });
+    await prisma.author.create({
+        data: {
+            id: 3,
+            name: "Anderson Ko",
+            bio: "Bcom @ UBC",
+            profileImage: "authors/ander.jpg",
+            contact: "kohc.anderson@gmail.com",
+            role: "Jr Analyst",
+            linkedin: "https://www.linkedin.com/in/anderson-ko/",
+            email: "anderson@example.com",
+            password,
+            articles: {
+                create: [
+                    {
+                        id: 2,
+                        title: "Walmart Equity Research Report",
+                        slug: "walmart-equity-research",
+                        summary: "This report analyzes Walmart’s equity performance, exploring the company’s financial position, market trends, and future growth potential in the retail sector.",
+                        src: "1zmuJQE0rqSfLFDTeYkesxJ9V-f0qBsME",
+                        tags: ["Equity Research"],
+                        publishedAt: new Date("2025-03-10"),
+                    },
+                ],
+            },
+        },
+    });
+
+    await prisma.author.create({
+        data: {
+            id: 4,
+            name: "Luke Delahunty",
+            bio: "Bcom @ UBC",
+            profileImage: "authors/luke.jpg",
+            contact: "lukedelahunty8@gmail.com",
+            role: "Jr Analyst",
+            linkedin: "https://www.linkedin.com/in/luke-delahunty",
+            email: "luke@example.com",
+            password,
+        },
+    });
 }
 
 main()
-  .then(() => console.log("Seeded authors with articles and hashed passwords"))
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(() => prisma.$disconnect());
+    .then(() => console.log("Seeded authors with articles and hashed passwords"))
+    .catch((e) => {
+        console.error(e);
+        process.exit(1);
+    })
+    .finally(() => prisma.$disconnect());
