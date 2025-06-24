@@ -4,13 +4,7 @@ import { getDataBySlug } from '@/lib/queries';
 import PDFPreview from '@/app/ui/articles/PDFPreview';
 
 
-type PageProps = {
-    params: {
-        slug: string;
-    };
-};
-
-export default async function ArticleFace({ params }: PageProps) {
+export default async function ArticleFace({ params }: { params: { slug: string } }) {
     const { slug } = params;
     const article = await getDataBySlug(slug);
     if (!article) return notFound();
