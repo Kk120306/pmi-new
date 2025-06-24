@@ -27,7 +27,7 @@ const Articles = async () => {
 
 
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 mt-20 mb-20">
-                {articles.map((article, index) => (
+                {articles.map((article: any, index: number) => (
                     <div key={article.slug || index} className="flex flex-col bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition duration-300 p-6">
                         <div className="flex items-center gap-2 text-sky-600 font-semibold mb-2">
                             <IoPricetagsOutline />

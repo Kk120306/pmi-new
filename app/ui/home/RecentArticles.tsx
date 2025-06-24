@@ -18,7 +18,7 @@ const RecentArticles = async () => {
             <h2 className="text-3xl md:text-5xl font-semibold mb-15 font-serif">Read More</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10">
-                {articles.map((article, index) => (
+                {articles.map((article: any, index: number) => (
                     <div key={article.slug || index} className="flex flex-col gap-4">
                         <div className="flex items-center gap-2 text-sky-600 font-semibold">
                             <IoPricetagsOutline />

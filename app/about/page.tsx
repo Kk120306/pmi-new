@@ -22,7 +22,7 @@ const About = async () => {
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-7xl">
-                        {authors.map((author) => (
+                        {authors.map((author : any) => (
                             <div
                                 key={author.id}
                                 className="bg-[#111111] border border-white/10 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"

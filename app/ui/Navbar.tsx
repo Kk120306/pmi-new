@@ -30,7 +30,7 @@ const NavBar = () => {
                 </button>
 
                 <ul className="hidden md:flex space-x-6">
-                    {navItems.map((item) => (
+                    {navItems.map((item : any) => (
                         <li key={item.name}>
                             <Link href={item.path} className={linkClasses}>
                                 {item.name}
@@ -42,7 +42,7 @@ const NavBar = () => {
 
             {isOpen && (
                 <ul className="md:hidden mt-4 space-y-3 px-4">
-                    {navItems.map((item) => (
+                    {navItems.map((item : any) => (
                         <li key={item.name}>
                             <Link
                                 href={item.path}

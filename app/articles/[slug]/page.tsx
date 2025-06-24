@@ -18,7 +18,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             </p>
 
             <div className="flex flex-wrap gap-2 mb-6">
-                {article.tags.map((tag, index) => (
+                {article.tags.map((tag: any, index: number) => (
                     <span
                         key={index}
                         className="bg-sky-100 text-sky-700 px-3 py-1 text-sm rounded-full font-medium"
@@ -46,16 +46,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             )}
 
             <div className="prose prose-lg text-gray-800 max-w-none">
-                {article.summary.split('\n\n').map((paragraph, idx) => (
+                {article.summary.split('\n\n').map((paragraph: any, idx: number) => (
                     <p key={idx}>{paragraph}</p>
                 ))}
             </div>
 
-            
-      <div>
-        <PDFPreview fileUrl={article.src} />
-      </div> 
-     
+
+            <div>
+                <PDFPreview fileUrl={article.src} />
+            </div>
+
         </div>
     );
 }
