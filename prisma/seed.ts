@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 async function main() {
 
     await prisma.article.deleteMany();
-  await prisma.author.deleteMany();
+    await prisma.author.deleteMany();
 
     const password = await bcrypt.hash("admin123", 10);
 
