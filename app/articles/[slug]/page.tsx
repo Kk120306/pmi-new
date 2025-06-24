@@ -4,8 +4,8 @@ import { getDataBySlug } from '@/lib/queries';
 import PDFPreview from '@/app/ui/articles/PDFPreview';
 
 
-export default async function ArticleFace({ params }: { params: { slug: string } }) {
-    const { slug } = params;
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
     const article = await getDataBySlug(slug);
     if (!article) return notFound();
     const author = article.author;
