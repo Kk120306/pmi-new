@@ -13,7 +13,7 @@ const Articles = async () => {
     const articles = await getAllArticles();
 
     return (
-        <div className="px-6 py-10 sm:px-10 md:px-16 lg:px-24 xl:px-32 bg-white text-gray-900 mt-20">
+        <div className="min-h-screen px-6 py-10 sm:px-10 md:px-16 lg:px-24 xl:px-32 bg-white text-gray-900 mt-20">
             <div className="mb-12 flex flex-col md:flex-row md:items-start md:space-x-10 px-2">
                 <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 md:mb-0 md:w-1/3 text-left">
                     All Articles
