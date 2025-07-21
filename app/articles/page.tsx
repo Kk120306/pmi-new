@@ -13,16 +13,17 @@ const Articles = async () => {
     const articles = await getAllArticles();
 
     return (
-        <div className="min-h-screen px-6 py-10 sm:px-10 md:px-16 lg:px-24 xl:px-32 bg-white text-gray-900 mt-20">            <div className="mb-12 flex flex-col md:flex-row md:items-start md:space-x-10 px-2">
-            <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 md:mb-0 md:w-1/3 text-left">
-                All Articles
-            </h1>
-            <p className="text-base sm:text-lg text-gray-600 md:w-2/3 text-left">
-                Discover powerful insights, expert strategies, and proven methods to grow your business,
-                boost productivity, and stay ahead of the curve. Dive into our collection of articles
-                written to inform, inspire, and ignite action.
-            </p>
-        </div>
+        <div className="px-6 py-10 sm:px-10 md:px-16 lg:px-24 xl:px-32 bg-white text-gray-900 mt-20">
+            <div className="mb-12 flex flex-col md:flex-row md:items-start md:space-x-10 px-2">
+                <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 md:mb-0 md:w-1/3 text-left">
+                    All Articles
+                </h1>
+                <p className="text-base sm:text-lg text-gray-600 md:w-2/3 text-left">
+                    Discover powerful insights, expert strategies, and proven methods to grow your business,
+                    boost productivity, and stay ahead of the curve. Dive into our collection of articles
+                    written to inform, inspire, and ignite action.
+                </p>
+            </div>
 
 
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 mt-20 mb-20">

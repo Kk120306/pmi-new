@@ -1,3 +1,5 @@
+"use server"
+
 import prisma from '@/lib/prisma';
 
 export async function findNewestArticle() {
@@ -46,4 +48,14 @@ export async function getDataBySlug(slug: string) {
         }
     });
     return article;
+}
+
+
+export async function getAuthorByEmail(email: string) {
+    const author = await prisma.author.findUnique({
+        where: {
+            email: email,
+        },
+    });
+    return author;
 }

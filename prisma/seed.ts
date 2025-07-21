@@ -19,7 +19,7 @@ async function main() {
             contact: "ktsuji@student.ubc.ca",
             role: "Lead Analyst",
             linkedin: "https://www.linkedin.com/in/kytsuj/",
-            email: "kyle@example.com",
+            email: "kyle@admin.com",
             password,
             articles: {
                 create: [
@@ -64,7 +64,7 @@ async function main() {
             contact: "kkamey01@student.ubc.ca",
             role: "Lead Developer",
             linkedin: "www.linkedin.com/in/kaikameyama",
-            email: "kai@example.com",
+            email: "kai@admin.com",
             password,
         },
     });
@@ -78,7 +78,7 @@ async function main() {
             contact: "kohc.anderson@gmail.com",
             role: "Jr Analyst",
             linkedin: "https://www.linkedin.com/in/anderson-ko/",
-            email: "anderson@example.com",
+            email: "anderson@admin.com",
             password,
             articles: {
                 create: [
@@ -105,7 +105,7 @@ async function main() {
             contact: "lukedelahunty8@gmail.com",
             role: "Jr Analyst",
             linkedin: "https://www.linkedin.com/in/luke-delahunty",
-            email: "luke@example.com",
+            email: "luke@admin.com",
             password,
         },
     });
