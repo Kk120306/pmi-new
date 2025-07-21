@@ -8,7 +8,7 @@ export default function Home() {
         <div className="text-white mb-10">
 
             <div
-                className="relative h-[89vh] md:h-[93vh] bg-cover bg-center flex items-end md:p-12 p-7 lg:p-15 pb-0 justify-between gap-5 md:parallax-bg"
+                className="relative h-[89vh] md:h-[93vh] bg-cover bg-center flex items-end md:p-12 p-7 lg:p-15 pb-0 justify-between gap-5 bg-fixed"
                 style={{ backgroundImage: `url(${HomeBg.src})` }}  
             >
                 <div className="absolute inset-0 bg-black/40"></div>

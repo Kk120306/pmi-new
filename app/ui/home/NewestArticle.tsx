@@ -10,7 +10,7 @@ const NewestArticle = async () => {
 
     return (
         <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-semibold mb-15 font-serif">Our Latest</h2>
+            <h2 className="text-3xl md:text-5xl font-semibold mb-15">Our Latest</h2>
             <div className="flex flex-col md:flex-row items-start justify-between md:gap-18 lg:gap-40 gap-7">
                 <div>
                     <div className="flex items-center mb-4 gap-2 ">

@@ -41,6 +41,15 @@ async function main() {
                         tags: ["Equity Research"],
                         publishedAt: new Date("2025-05-01"),
                     },
+                    {
+                        id: 4, 
+                        title : "Eldorado Gold Corporation Thesis",
+                        slug: "eldorado-gold-thesis",
+                        summary: "This article presents a comprehensive investment thesis on Eldorado Gold Corporation, analyzing its financial health, market position, and growth prospects in the mining industry.",
+                        src: "1tlJps2igXKYBjiEgnMTOtGs9XrwVUBRe",
+                        tags: ["Investment Thesis"],
+                        publishedAt: new Date("2025-07-16"),
+                    }
                 ],
             },
         },
