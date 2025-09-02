@@ -25,9 +25,11 @@ const RecentArticles = async () => {
                             <span>{article.tags[0]}</span>
                         </div>
                         <Image
-                            src={images[index]}
+                            src={`https://drive.google.com/thumbnail?id=${article.imgUrl}&sz=w400-h192`}
                             alt={`Recent article ${index + 1}`}
                             className="w-full h-48 sm:h-52 md:h-56 object-cover rounded"
+                            width={400}
+                            height={192}
                         />
                         <h3 className="text-xl font-bold">{article.title}</h3>
                         <p className="text-sm text-gray-500">{new Date(article.publishedAt).toDateString()}</p>
