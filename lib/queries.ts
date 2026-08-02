@@ -38,12 +38,18 @@ export async function findNewestArticle() {
 }
 
 
-export async function getAllAuthors() {
+export async function getPublicAuthors() {
     if (!hasDatabase()) {
         return [];
     }
 
-    const authors = await database().author.findMany()
+    const authors = await database().author.findMany({
+        where: {
+            email: {
+                not: 'luke@admin.com',
+            },
+        },
+    });
     return authors;
 }
 
