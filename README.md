@@ -1,63 +1,63 @@
-# 🌏 Pacific Market Insights (PMI)
+# Pacific Market Insights
 
-Pacific Market Insights is a business-focused web platform that delivers in-depth case studies, market analysis, and strategic insights on global companies. Built with React and Tailwind CSS, the platform provides a clean and modern user interface optimized for both desktop and mobile users.
+Pacific Market Insights publishes business articles, equity research, and presentation-led market analysis.
+The application is built with Next.js, React, Prisma, PostgreSQL, and Tailwind CSS.
 
-- This project is a revised version - now using typescript (first time using typscript) and using Next.js
+[View the production site](https://www.pacificmarketinsights.online/)
 
-🌐 **Live Demo**  
-🔗 [View Deployed Site](https://www.pacificmarketinsights.org/)
+## Features
 
----
+- Business articles with embedded document previews
+- Dedicated research deck and slide libraries
+- Presentation detail pages with inline PDF viewing and downloads
+- Database-backed author and publication data
+- Responsive navigation and layouts for desktop and mobile devices
 
-## 🔍 Features
+## Tech stack
 
-- 📖 **Business Articles**: View detailed business breakdowns in Iframe for google drive previews.
-- 🧠 **Newest & Recent Articles**: Displayed on the homepage with visually engaging layouts.
-- 🧑‍💼 **About Section**: Team member bios dynamically rendered from JSON.
-- 📱 **Responsive Design**: Fully optimized for all devices.
+- Next.js 15 and React 19
+- TypeScript
+- Tailwind CSS
+- Prisma with PostgreSQL and optional Prisma Accelerate support
+- Vercel for production hosting
 
----
+## Local development
 
-## 📸 Screenshots
-
-### 🏠 Homepage
-
-![Homepage Screenshot](./public/preview/homepage.png)
-
-### 📄 Articles
-
-![PDF Viewer Screenshot](./public/preview/articles.png)
-
-### 👥 About Us
-
-![About Page Screenshot](./public/preview/about.png)
-
----
-
-## ⚙️ Tech Stack
-
-- **Frontend**: React, Vite
-- **Styling**: Tailwind CSS
-- **Icons**: React Icons
-- **PDF Embedding**: Google Docs Viewer via iframe
-- **Data Source**: Static JSON for team member info
-
----
-
-
-## 📁 Getting Started
-
-To run this project locally:
+Install dependencies:
 
 ```bash
-# Clone the repository
-git clone https://github.com/Kk120306/PMI.git
+pnpm install
+```
 
-# Navigate into the directory
-cd PMI
+Add `DATABASE_URL` to a local `.env` file when working with database-backed articles and authors.
+Presentation pages include local fallback data so they can be developed without a database connection.
 
-# Install dependencies
-npm install
+Start the development server:
 
-# Start the development server
-npm start
+```bash
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Validation
+
+Run the project checks before publishing changes:
+
+```bash
+pnpm lint
+pnpm exec tsc --noEmit
+pnpm build
+```
+
+Validate and deploy database migrations with a direct PostgreSQL connection:
+
+```bash
+pnpm prisma validate
+pnpm prisma migrate deploy
+```
+
+## Deployment
+
+Pushes to `main` deploy to the production Vercel project.
+The production domain is [www.pacificmarketinsights.online](https://www.pacificmarketinsights.online/).
