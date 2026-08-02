@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
-import { getAllAuthors, getAllArticles } from '@/lib/queries';
+import Image from 'next/image';
 import { getDataBySlug } from '@/lib/queries';
 import PDFPreview from '@/app/ui/articles/PDFPreview';
 
+export const dynamic = 'force-dynamic';
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -30,9 +31,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
             {author && (
                 <div className="flex items-center gap-4 mb-10">
-                    <img
+                    <Image
                         src={`/${author.profileImage}`}
                         alt={author.name}
+                        width={64}
+                        height={64}
                         className="w-16 h-16 rounded-full object-cover border"
                     />
                     <div>
@@ -53,7 +56,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
 
             <div>
-                <PDFPreview fileUrl={article.src} />
+                <PDFPreview
+                    fileUrl={article.src}
+                    title={`${article.title} document`}
+                />
             </div>
 
         </div>

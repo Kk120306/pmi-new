@@ -3,6 +3,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { getAllArticles } from "@/lib/queries"
 
+export const dynamic = "force-dynamic"
+
 const Articles = async () => {
     const articles = await getAllArticles()
 

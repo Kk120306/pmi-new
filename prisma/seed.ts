@@ -1,10 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
+import { skeenaPresentation } from '../lib/presentation-data';
 
 const prisma = new PrismaClient();
 
 async function main() {
 
+    await prisma.presentation.deleteMany();
     await prisma.article.deleteMany();
     await prisma.author.deleteMany();
 
@@ -55,6 +57,11 @@ async function main() {
                     }
                 ],
             },
+            presentations: {
+                create: [
+                    skeenaPresentation,
+                ],
+            },
         },
     });
 
@@ -97,20 +104,6 @@ async function main() {
                     },
                 ],
             },
-        },
-    });
-
-    await prisma.author.create({
-        data: {
-            id: 4,
-            name: "Luke Delahunty",
-            bio: "Bcom @ UBC",
-            profileImage: "authors/luke.jpg",
-            contact: "lukedelahunty8@gmail.com",
-            role: "Analyst",
-            linkedin: "https://www.linkedin.com/in/luke-delahunty",
-            email: "luke@admin.com",
-            password,
         },
     });
 

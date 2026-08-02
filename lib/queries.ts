@@ -1,7 +1,34 @@
-import prisma from '@/lib/prisma';
+import { getPrismaClient } from '@/lib/prisma';
+import { Prisma, PresentationType } from '@prisma/client';
+import {
+    kyleTsujiPublicProfile,
+    skeenaPresentation,
+} from '@/lib/presentation-data';
+
+const hasDatabase = () => Boolean(process.env.DATABASE_URL);
+const database = () => getPrismaClient();
+type PresentationWithAuthor = Prisma.PresentationGetPayload<{
+    include: { author: true };
+}>;
+
+const localPresentations = [
+    {
+        ...skeenaPresentation,
+        authorId: kyleTsujiPublicProfile.id,
+        author: kyleTsujiPublicProfile,
+    },
+];
+
+const isMissingPresentationTable = (error: unknown) =>
+    error instanceof Prisma.PrismaClientKnownRequestError &&
+    error.code === 'P2021';
 
 export async function findNewestArticle() {
-    const article = await prisma.article.findFirst({
+    if (!hasDatabase()) {
+        return null;
+    }
+
+    const article = await database().article.findFirst({
         orderBy: {
             publishedAt: 'desc',
         },
@@ -12,13 +39,21 @@ export async function findNewestArticle() {
 
 
 export async function getAllAuthors() {
-    const authors = await prisma.author.findMany()
+    if (!hasDatabase()) {
+        return [];
+    }
+
+    const authors = await database().author.findMany()
     return authors;
 }
 
 export async function getRecentArticles() {
+    if (!hasDatabase()) {
+        return [];
+    }
+
     const limit = 3;
-    const articles = await prisma.article.findMany({
+    const articles = await database().article.findMany({
         orderBy: {
             publishedAt: 'desc',
         },
@@ -28,7 +63,11 @@ export async function getRecentArticles() {
 }
 
 export async function getAllArticles() {
-    const articles = await prisma.article.findMany({
+    if (!hasDatabase()) {
+        return [];
+    }
+
+    const articles = await database().article.findMany({
         orderBy: {
             publishedAt: 'desc',
         },
@@ -37,7 +76,11 @@ export async function getAllArticles() {
 }
 
 export async function getDataBySlug(slug: string) {
-    const article = await prisma.article.findUnique({
+    if (!hasDatabase()) {
+        return null;
+    }
+
+    const article = await database().article.findUnique({
         where: {
             slug: slug,
         },
@@ -48,9 +91,84 @@ export async function getDataBySlug(slug: string) {
     return article;
 }
 
+export async function getPresentationsByType(
+    type: PresentationType,
+): Promise<PresentationWithAuthor[]> {
+    if (!hasDatabase()) {
+        return localPresentations.filter(
+            (presentation) => presentation.type === type,
+        );
+    }
+
+    try {
+        return await database().presentation.findMany({
+            where: {
+                type,
+            },
+            include: {
+                author: true,
+            },
+            orderBy: {
+                publishedAt: 'desc',
+            },
+        });
+    } catch (error) {
+        if (isMissingPresentationTable(error)) {
+            return localPresentations.filter(
+                (presentation) => presentation.type === type,
+            );
+        }
+
+        throw error;
+    }
+}
+
+export async function getPresentationBySlug(
+    slug: string,
+    type?: PresentationType,
+): Promise<PresentationWithAuthor | null> {
+    if (!hasDatabase()) {
+        return (
+            localPresentations.find(
+                (presentation) =>
+                    presentation.slug === slug &&
+                    (!type || presentation.type === type),
+            ) ?? null
+        );
+    }
+
+    try {
+        return await database().presentation.findFirst({
+            where: {
+                slug,
+                ...(type ? { type } : {}),
+            },
+            include: {
+                author: true,
+            },
+        });
+    } catch (error) {
+        if (isMissingPresentationTable(error)) {
+            return (
+                localPresentations.find(
+                    (presentation) =>
+                        presentation.slug === slug &&
+                        (!type || presentation.type === type),
+                ) ?? null
+            );
+        }
+
+        throw error;
+    }
+}
+
 
 export async function getAuthorByEmail(email: string) {
-    const author = await prisma.author.findUnique({
+    if (!hasDatabase()) {
+        return null;
+    }
+
+    const author = await database().author.findUnique({
         where: {
             email: email,
         },

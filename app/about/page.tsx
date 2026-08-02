@@ -1,5 +1,8 @@
 import { getAllAuthors } from "@/lib/queries"
+import Image from "next/image"
 import { FaLinkedinIn } from "react-icons/fa"
+
+export const dynamic = "force-dynamic"
 
 const About = async () => {
   const authors = await getAllAuthors()
@@ -13,7 +16,7 @@ const About = async () => {
 
           <p className="text-lg text-gray-300 leading-relaxed max-w-4xl mb-8">
             With deep market expertise and proven analytical frameworks, our team delivers actionable financial
-            intelligence that empowers informed decision-making in today's dynamic economic landscape.
+            intelligence that empowers informed decision-making in today&apos;s dynamic economic landscape.
           </p>
 
         </div>
@@ -25,9 +28,11 @@ const About = async () => {
             {authors.map((author: any) => (
               <div key={author.id} className="group flex flex-col items-center text-center">
                 <div className="mb-6">
-                  <img
-                    src={author.profileImage || "/placeholder.svg"}
+                  <Image
+                    src={author.profileImage ? `/${author.profileImage}` : "/authors/placeholder.png"}
                     alt={author.name}
+                    width={144}
+                    height={144}
                     className="w-32 h-32 lg:w-36 lg:h-36 object-cover rounded-full border-2 border-gray-800 group-hover:border-gray-600 transition-all duration-300 group-hover:scale-105"
                   />
                 </div>

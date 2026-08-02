@@ -1,7 +1,10 @@
 import HomeBg from "@/public/home-bg.jpg";
+import Image from "next/image";
 import NewestArticle from "@/app/ui/home/NewestArticle";
 import RecentArticles from "@/app/ui/home/RecentArticles";
 import HomeSecBg from "@/public/home-sec-bg.jpg";
+
+export const dynamic = "force-dynamic";
 
 export default function Home() {
     return (
@@ -28,8 +31,8 @@ export default function Home() {
             <div className="md:p-12 p-7 lg:p-15 text-black mt-20 flex flex-col items-center justify-center gap-8 md:gap-20">
                 <NewestArticle />
                 <div className="w-full md:px-8 lg:px-12">
-                    <img
-                        src={HomeSecBg.src}
+                    <Image
+                        src={HomeSecBg}
                         alt="Home Section Background"
                         className="w-full max-w-6xl mx-auto max-h-[200px] md:max-h-[300px] lg:max-h-[400px] object-cover"
                     />

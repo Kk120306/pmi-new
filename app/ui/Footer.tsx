@@ -36,7 +36,9 @@ const Footer = () => {
 
 
                 <div className="text-sm text-center md:text-left">
-                    <p className="mb-2">&copy; 2025 Pacific Market. All rights reserved.</p>
+                    <p className="mb-2">
+                        &copy; {new Date().getFullYear()} Pacific Market. All rights reserved.
+                    </p>
 
                 </div>
             </div>
