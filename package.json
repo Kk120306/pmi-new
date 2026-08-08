@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint app lib prisma --ext .js,.jsx,.ts,.tsx",
-    "vercel-build": "prisma generate && next build"
+    "vercel-build": "prisma migrate deploy && prisma generate && next build"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
