@@ -42,7 +42,6 @@ model Article {
 
 enum PresentationType {
   DECK
-  SLIDES
 }
 
 model Presentation {

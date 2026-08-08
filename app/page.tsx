@@ -3,6 +3,7 @@ import Image from "next/image";
 import NewestArticle from "@/app/ui/home/NewestArticle";
 import RecentArticles from "@/app/ui/home/RecentArticles";
 import HomeSecBg from "@/public/home-sec-bg.jpg";
+import LatestPublication from "@/app/ui/home/LatestPublication";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +31,7 @@ export default function Home() {
 
             <div className="md:p-12 p-7 lg:p-15 text-black mt-20 flex flex-col items-center justify-center gap-8 md:gap-20">
                 <NewestArticle />
+                <LatestPublication />
                 <div className="w-full md:px-8 lg:px-12">
                     <Image
                         src={HomeSecBg}

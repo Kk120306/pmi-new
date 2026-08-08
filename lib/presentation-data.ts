@@ -6,10 +6,10 @@ export const skeenaPresentation = {
     slug: 'skeena-gold-silver',
     summary:
         'An equity research presentation on Skeena Gold & Silver, covering the Eskay Creek project, industry dynamics, investment thesis, valuation, key risks, and catalysts.',
-    src: '/slides/skeena-gold-silver.pdf',
-    imageUrl: '/slides/skeena-gold-silver-cover.jpg',
+    src: '/decks/skeena-gold-silver.pdf',
+    imageUrl: '/decks/skeena-gold-silver-cover.jpg',
     tags: ['Equity Research', 'Mining', 'Gold & Silver'],
-    type: PresentationType.SLIDES,
+    type: PresentationType.DECK,
     pageCount: 37,
     publishedAt: new Date('2026-03-29T12:00:00.000Z'),
 };
@@ -20,7 +20,7 @@ export const kyleTsujiPublicProfile = {
     bio: 'Bcom @ UBC',
     profileImage: 'authors/kyle.jpg',
     contact: 'ktsuji@student.ubc.ca',
-    role: 'Lead Analyst',
+    role: 'Director',
     linkedin: 'https://www.linkedin.com/in/kytsuj/',
     email: 'kyle@admin.com',
     password: '',

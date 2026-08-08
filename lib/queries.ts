@@ -123,6 +123,29 @@ export async function getPresentationsByType(
     }
 }
 
+export async function findNewestPublication(): Promise<PresentationWithAuthor | null> {
+    if (!hasDatabase()) {
+        return localPresentations[0] ?? null;
+    }
+
+    try {
+        return await database().presentation.findFirst({
+            include: {
+                author: true,
+            },
+            orderBy: {
+                publishedAt: 'desc',
+            },
+        });
+    } catch (error) {
+        if (isMissingPresentationTable(error)) {
+            return localPresentations[0] ?? null;
+        }
+
+        throw error;
+    }
+}
+
 export async function getPresentationBySlug(
     slug: string,
     type?: PresentationType,

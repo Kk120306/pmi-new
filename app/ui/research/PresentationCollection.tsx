@@ -11,11 +11,6 @@ type PresentationCollectionProps = {
     introduction: string;
 };
 
-const routeByType: Record<PresentationType, string> = {
-    DECK: '/decks',
-    SLIDES: '/slides',
-};
-
 const PresentationCollection = async ({
     type,
     eyebrow,
@@ -23,7 +18,7 @@ const PresentationCollection = async ({
     introduction,
 }: PresentationCollectionProps) => {
     const presentations = await getPresentationsByType(type);
-    const route = routeByType[type];
+    const route = '/decks';
 
     return (
         <main className="min-h-screen bg-[#f2f0e9] text-[#101820]">
@@ -118,7 +113,7 @@ const PresentationCollection = async ({
                                             </span>
                                             <span className="flex items-center gap-2">
                                                 <FileText size={15} />
-                                                {presentation.pageCount} slides
+                                                {presentation.pageCount} pages
                                             </span>
                                         </div>
                                         <Link

@@ -15,22 +15,22 @@ import { getPresentationBySlug } from '@/lib/queries';
 
 export const dynamic = 'force-dynamic';
 
-type SlidePageProps = {
+type DeckPageProps = {
     params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({
     params,
-}: SlidePageProps): Promise<Metadata> {
+}: DeckPageProps): Promise<Metadata> {
     const { slug } = await params;
     const presentation = await getPresentationBySlug(
         slug,
-        PresentationType.SLIDES,
+        PresentationType.DECK,
     );
 
     if (!presentation) {
         return {
-            title: 'Slides Not Found | Pacific Market Insights',
+            title: 'Deck Not Found | Pacific Market Insights',
         };
     }
 
@@ -40,11 +40,11 @@ export async function generateMetadata({
     };
 }
 
-export default async function SlidePage({ params }: SlidePageProps) {
+export default async function DeckPage({ params }: DeckPageProps) {
     const { slug } = await params;
     const presentation = await getPresentationBySlug(
         slug,
-        PresentationType.SLIDES,
+        PresentationType.DECK,
     );
 
     if (!presentation) {
@@ -56,11 +56,11 @@ export default async function SlidePage({ params }: SlidePageProps) {
             <section className="border-b border-white/10 bg-[#0b1f38] px-6 py-14 text-white sm:px-10 lg:px-16 lg:py-20">
                 <div className="mx-auto max-w-7xl">
                     <Link
-                        href="/slides"
+                        href="/decks"
                         className="mb-10 inline-flex items-center gap-2 text-sm text-slate-300 transition hover:text-white"
                     >
                         <ArrowLeft size={16} />
-                        All slides
+                        All decks
                     </Link>
 
                     <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
@@ -139,7 +139,7 @@ export default async function SlidePage({ params }: SlidePageProps) {
                         </span>
                         <span className="inline-flex items-center gap-2">
                             <FileText size={16} />
-                            {presentation.pageCount} slides
+                            {presentation.pageCount} pages
                         </span>
                         <a
                             href={presentation.src}

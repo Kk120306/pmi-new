@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import {
     BookOpenText,
     ChevronDown,
-    FileChartColumn,
     Menu,
     PanelsTopLeft,
     X,
@@ -28,15 +27,9 @@ const researchItems = [
     },
     {
         name: 'Decks',
-        description: 'Long-form research decks',
+        description: 'Presentation-led equity research',
         path: '/decks',
         icon: PanelsTopLeft,
-    },
-    {
-        name: 'Slides',
-        description: 'Presentation-led research',
-        path: '/slides',
-        icon: FileChartColumn,
     },
 ];
 

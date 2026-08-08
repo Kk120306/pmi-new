@@ -6,7 +6,7 @@ import Footer from "@/app/ui/Footer";
 export const metadata: Metadata = {
     title: "Pacific Market Insights",
     description:
-        "Explore articles, research decks, and presentation-led market insights.",
+        "Explore articles and equity research decks from Pacific Market Insights.",
 };
 
 export default function RootLayout({

@@ -19,7 +19,7 @@ async function main() {
             bio: "Bcom @ UBC",
             profileImage: "authors/kyle.jpg",
             contact: "ktsuji@student.ubc.ca",
-            role: "Lead Analyst",
+            role: "Director",
             linkedin: "https://www.linkedin.com/in/kytsuj/",
             email: "kyle@admin.com",
             password,
