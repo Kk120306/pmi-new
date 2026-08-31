@@ -4,6 +4,10 @@ import {
     kyleTsujiPublicProfile,
     skeenaPresentation,
 } from '@/lib/presentation-data';
+import {
+    filterPublicAuthors,
+    publicAuthorWhere,
+} from '@/lib/public-authors';
 
 const hasDatabase = () => Boolean(process.env.DATABASE_URL);
 const database = () => getPrismaClient();
@@ -38,13 +42,16 @@ export async function findNewestArticle() {
 }
 
 
-export async function getAllAuthors() {
+export async function getPublicAuthors() {
     if (!hasDatabase()) {
         return [];
     }
 
-    const authors = await database().author.findMany()
-    return authors;
+    const authors = await database().author.findMany({
+        where: publicAuthorWhere,
+    });
+
+    return filterPublicAuthors(authors);
 }
 
 export async function getRecentArticles() {

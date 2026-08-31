@@ -1,11 +1,11 @@
-import { getAllAuthors } from "@/lib/queries"
+import { getPublicAuthors } from "@/lib/queries"
 import Image from "next/image"
 import { FaLinkedinIn } from "react-icons/fa"
 
 export const dynamic = "force-dynamic"
 
 const About = async () => {
-  const authors = await getAllAuthors()
+  const authors = await getPublicAuthors()
 
   return (
     <div className="bg-black min-h-screen">

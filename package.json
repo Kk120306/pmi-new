@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint app lib prisma --ext .js,.jsx,.ts,.tsx",
+    "test": "tsx --test tests/*.test.ts",
+    "lint": "eslint app lib prisma tests --ext .js,.jsx,.ts,.tsx",
     "vercel-build": "prisma migrate deploy && prisma generate && next build"
   },
   "prisma": {
